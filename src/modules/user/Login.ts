@@ -23,6 +23,11 @@ export class LoginResolver {
       return null
     } // return null if passwords do not match
 
+    if (!user.confirmed) {
+      return null;
+      // user must be confirmed to log in
+      // possible place for 'please confirm' message
+    }
     ctx.req.session!.userId = user.id; //creates session in redis, sends back cookie
 
     return user;

@@ -26,6 +26,10 @@ export class User extends BaseEntity{
     return `${parent.firstName} ${parent.lastName}`;
   }
 
+  //without Field dec, column is not exposed to GraphQL
   @Column()
   password: string;
+
+  @Column({default: false}) 
+  confirmed: boolean;
 }
