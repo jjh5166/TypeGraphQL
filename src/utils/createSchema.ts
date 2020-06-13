@@ -1,3 +1,4 @@
+import { ProfilePictureResolver } from './../modules/user/ProfilePicture';
 import { CreateUserResolver } from './../modules/user/CreateUser';
 import { buildSchema } from "type-graphql";
 import { ChangePasswordResolver } from "../modules/user/ChangePassword";
@@ -20,7 +21,8 @@ export const createSchema = () => buildSchema({
     MeResolver,
     RegisterResolver,
     CreateUserResolver,
-    CreateProductResolver
+    CreateProductResolver,
+    ProfilePictureResolver
   ],
   authChecker: ({ context: { req } }) => {
     return !!req.session.userId; // return false if denied, cast to bool
