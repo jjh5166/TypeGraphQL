@@ -27,7 +27,7 @@ mutation Register($data: RegisterInput!) {
 }
 `
 describe('Register', () => {
-  it("create user", async () => {
+  it.only("create user", async () => {
     const user = {
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
@@ -41,6 +41,11 @@ describe('Register', () => {
         data: user
       }
     })
+
+    if (response.errors) {
+      console.log(response.errors[0].originalError);
+    }
+    
     expect(response).toMatchObject({
       data: {
         register: {
